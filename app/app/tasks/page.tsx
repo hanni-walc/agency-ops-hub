@@ -1,18 +1,30 @@
-export default function RoutePage() {
+import { sampleTasks } from '../../../lib/product';
+
+export default function TasksPage() {
   return (
     <main className="shell">
       <section className="frame hero">
-        <p className="eyebrow">Route</p>
-        <h1>Page scaffold</h1>
-        <p className="lead">This route exists so the repo is structurally complete and ready for a real backend implementation.</p>
-        <div className="row">
-          <a className="button" href="/app">Back to dashboard</a>
-          <a className="ghost" href="/">Open landing page</a>
-        </div>
+        <p className="eyebrow">Tasks</p>
+        <h1>Track the work that keeps the agency running.</h1>
+        <p className="lead">A simple board for handoffs, open assignments, and the next thing to unblock.</p>
       </section>
+
       <section className="card">
-        <p className="kicker">Implementation note</p>
-        <p className="muted">Replace this scaffold with route-specific behavior, forms, or detail views as the product is implemented.</p>
+        <table className="table">
+          <thead>
+            <tr><th>Task</th><th>Owner</th><th>Status</th><th>Due</th></tr>
+          </thead>
+          <tbody>
+            {sampleTasks.map((task) => (
+              <tr key={task.id}>
+                <td><strong>{task.title}</strong></td>
+                <td>{task.owner}</td>
+                <td>{task.status}</td>
+                <td>{task.due}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </section>
     </main>
   );

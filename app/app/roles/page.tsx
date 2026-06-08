@@ -1,18 +1,27 @@
-export default function RoutePage() {
+import { sampleRoles, sampleTasks } from '../../../lib/product';
+
+export default function RolesPage() {
   return (
     <main className="shell">
       <section className="frame hero">
-        <p className="eyebrow">Route</p>
-        <h1>Page scaffold</h1>
-        <p className="lead">This route exists so the repo is structurally complete and ready for a real backend implementation.</p>
-        <div className="row">
-          <a className="button" href="/app">Back to dashboard</a>
-          <a className="ghost" href="/">Open landing page</a>
-        </div>
+        <p className="eyebrow">Roles</p>
+        <h1>Make ownership obvious.</h1>
+        <p className="lead">Each role page tells the team what the person owns and how often they should show up.</p>
       </section>
-      <section className="card">
-        <p className="kicker">Implementation note</p>
-        <p className="muted">Replace this scaffold with route-specific behavior, forms, or detail views as the product is implemented.</p>
+
+      <section className="grid cols-2">
+        {sampleRoles.map((role) => (
+          <article key={role.id} className="card">
+            <p className="kicker">{role.meetingCadence}</p>
+            <h2>{role.name}</h2>
+            <p className="muted">{role.responsibility}</p>
+            <ul className="list">
+              {sampleTasks.filter((task) => task.status !== 'done').slice(0, 2).map((task) => (
+                <li key={task.id}>{task.title} · {task.owner}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </section>
     </main>
   );

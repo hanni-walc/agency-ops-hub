@@ -1,18 +1,22 @@
-export default function RoutePage() {
+import { sampleChecklists } from '../../../lib/product';
+
+export default function ChecklistsPage() {
   return (
     <main className="shell">
       <section className="frame hero">
-        <p className="eyebrow">Route</p>
-        <h1>Page scaffold</h1>
-        <p className="lead">This route exists so the repo is structurally complete and ready for a real backend implementation.</p>
-        <div className="row">
-          <a className="button" href="/app">Back to dashboard</a>
-          <a className="ghost" href="/">Open landing page</a>
-        </div>
+        <p className="eyebrow">Checklists</p>
+        <h1>Reusable onboarding and launch checklists.</h1>
+        <p className="lead">Designed for real handoffs so every step is visible on mobile and printable when needed.</p>
       </section>
-      <section className="card">
-        <p className="kicker">Implementation note</p>
-        <p className="muted">Replace this scaffold with route-specific behavior, forms, or detail views as the product is implemented.</p>
+
+      <section className="grid cols-2">
+        {sampleChecklists.map((checklist) => (
+          <article key={checklist.id} className="card">
+            <p className="kicker">{checklist.audience}</p>
+            <h2>{checklist.title}</h2>
+            <ul className="list">{checklist.steps.map((step) => <li key={step}>{step}</li>)}</ul>
+          </article>
+        ))}
       </section>
     </main>
   );

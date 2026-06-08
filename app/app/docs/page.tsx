@@ -1,18 +1,22 @@
-export default function RoutePage() {
+import { sampleDocs } from '../../../lib/product';
+
+export default function DocsPage() {
   return (
     <main className="shell">
       <section className="frame hero">
-        <p className="eyebrow">Route</p>
-        <h1>Page scaffold</h1>
-        <p className="lead">This route exists so the repo is structurally complete and ready for a real backend implementation.</p>
-        <div className="row">
-          <a className="button" href="/app">Back to dashboard</a>
-          <a className="ghost" href="/">Open landing page</a>
-        </div>
+        <p className="eyebrow">Knowledge base</p>
+        <h1>SOPs that are easy to find and easy to follow.</h1>
+        <p className="lead">Every doc carries a clear category, summary, and action path for the team.</p>
       </section>
-      <section className="card">
-        <p className="kicker">Implementation note</p>
-        <p className="muted">Replace this scaffold with route-specific behavior, forms, or detail views as the product is implemented.</p>
+
+      <section className="grid cols-2">
+        {sampleDocs.map((doc) => (
+          <article key={doc.id} className="card">
+            <p className="kicker">{doc.category}</p>
+            <h2>{doc.title}</h2>
+            <p className="muted">{doc.summary}</p>
+          </article>
+        ))}
       </section>
     </main>
   );

@@ -1,18 +1,22 @@
-export default function RoutePage() {
+import { buildSearchSummary, sampleDocs, sampleTasks } from '../../lib/product';
+
+const search = buildSearchSummary('onboarding', sampleDocs, sampleTasks);
+
+export default function SearchPage() {
   return (
     <main className="shell">
       <section className="frame hero">
-        <p className="eyebrow">Route</p>
-        <h1>Page scaffold</h1>
-        <p className="lead">This route exists so the repo is structurally complete and ready for a real backend implementation.</p>
-        <div className="row">
-          <a className="button" href="/app">Back to dashboard</a>
-          <a className="ghost" href="/">Open landing page</a>
-        </div>
+        <p className="eyebrow">Search</p>
+        <h1>Find the right doc or task in seconds.</h1>
+        <p className="lead">This is the fastest way to surface onboarding, handoff, and process steps without hunting through chat.</p>
       </section>
+
       <section className="card">
-        <p className="kicker">Implementation note</p>
-        <p className="muted">Replace this scaffold with route-specific behavior, forms, or detail views as the product is implemented.</p>
+        <p className="kicker">Query</p>
+        <h2>{search.query}</h2>
+        <ul className="list">
+          {search.results.map((result) => <li key={result}>{result}</li>)}
+        </ul>
       </section>
     </main>
   );
