@@ -1,4 +1,5 @@
 import { buildOpsSnapshot, sampleChecklists, sampleDocs, sampleRoles, sampleTasks } from '../../lib/product';
+import { withBasePath } from "@/lib/site-path";
 
 const snapshot = buildOpsSnapshot(sampleDocs, sampleChecklists, sampleRoles, sampleTasks);
 
@@ -10,8 +11,8 @@ export default function DashboardPage() {
         <h1>Run the company from one operating system.</h1>
         <p className="lead">Keep docs, checklists, roles, and tasks connected so the team always knows what to do next.</p>
         <div className="row">
-          <a className="button" href="/app/docs">Open docs</a>
-          <a className="ghost" href="/search">Search workspace</a>
+          <a className="button" href={withBasePath('/app/docs')}>Open docs</a>
+          <a className="ghost" href={withBasePath('/search')}>Search workspace</a>
         </div>
       </section>
 

@@ -1,3 +1,4 @@
+import { withBasePath } from "@/lib/site-path";
 export default function LoginPage() {
   return (
     <main className="shell">
@@ -19,8 +20,8 @@ export default function LoginPage() {
           </label>
         </div>
         <div className="row" style={{ marginTop: 16 }}>
-          <a className="button" href="/app">Continue</a>
-          <a className="ghost" href="/">Back to home</a>
+          <a className="button" href={withBasePath('/app')}>Continue</a>
+          <a className="ghost" href={withBasePath('/')}>Back to home</a>
         </div>
       </section>
     </main>

@@ -1,4 +1,5 @@
 import { BUYER, LAUNCH, PROMISE, V2, WEDGE, buildChecklist, buildOpsSnapshot, buildRoleBrief, buildSearchSummary, sampleChecklists, sampleDocs, sampleRoles, sampleTasks } from '../lib/product';
+import { withBasePath } from "@/lib/site-path";
 
 const snapshot = buildOpsSnapshot(sampleDocs, sampleChecklists, sampleRoles, sampleTasks);
 const checklist = buildChecklist(sampleChecklists[0]);
@@ -13,8 +14,8 @@ export default function HomePage() {
         <h1>{PROMISE}</h1>
         <p className="lead">{WEDGE} Built for {BUYER} that need SOPs, onboarding, and handoffs to live in one place.</p>
         <div className="row">
-          <a className="button" href="/app">Open dashboard</a>
-          <a className="ghost" href="/search">Try search</a>
+          <a className="button" href={withBasePath('/app')}>Open dashboard</a>
+          <a className="ghost" href={withBasePath('/search')}>Try search</a>
         </div>
       </section>
 
